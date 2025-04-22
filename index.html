@@ -1,247 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>blackyee-Portfolio</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap");
-
-      :root {
-        --clr-1: #ffffff;
-        --clr-4: #00976d;
-        --fs: clamp(2rem, 6vw, 4rem);
-        --ls: clamp(-1.75px, -0.25vw, -3.5px);
-      }
-
-      body {
-        min-height: 100vh;
-        background-color: #000;
-        color: #fff;
-        font-family: "Poppins", sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-      }
-
-      .aurora-title {
-        font-size: var(--fs);
-        font-weight: 800;
-        letter-spacing: var(--ls);
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-        background-image: linear-gradient(
-          90deg,
-          var(--clr-1),
-          var(--clr-4),
-          var(--clr-1)
-        );
-        background-size: 200% 100%;
-        animation: aurora-bg 4s linear infinite;
-      }
-
-      @keyframes aurora-bg {
-        0% {
-          background-position: 100% 0;
-        }
-        100% {
-          background-position: -100% 0;
-        }
-      }
-
-      @media (max-width: 600px) {
-        :root {
-          --fs: 3rem;
-        }
-      }
-    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Marriage Proposal</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
   </head>
-  <body class="bg-black text-white font-Poppins">
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full bg-black z-50 p-4 shadow-lg">
-      <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <!-- Logo -->
-        <h1 class="aurora-title text-2xl">Sankar M</h1>
-        <!--Toggle Bar -->
-        <button id="hamburger-btn" class="md:hidden focus:outline-none">
-          <svg
-            class="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16">
-            </path>
-          </svg>
-        </button>
-        <!-- Nav Menu -->
-        <ul id="nav-menu" class="hidden md:flex space-x-6 items-center">
-          <li><a href="./index.html" class="hover:text-emerald-500">Home</a></li>
-          <li><a href="./Experience.html" class="hover:text-emerald-500">Experience</a></li>
-          <li class="relative">
-            <button
-              id="resources-btn"
-              class="hover:text-emerald-500 flex items-center">
-              Category ▾
-            </button>
-            <ul
-              id="resources-menu"
-              class="absolute left-0 mt-2 w-48 bg-emerald-800 text-white rounded-xl shadow-lg hidden py-2">
-              <li>
-                <a
-                  href="./Games.html"
-                  class="block px-6 py-3 hover:bg-emerald-200 hover:text-black rounded-lg">
-                  Games
-                </a>
-              </li>
-              <li>
-                <a
-                  href="./AR.html"
-                  class="block px-6 py-3 hover:bg-emerald-200 hover:text-black rounded-lg">
-                  AR
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="./Contact.html" class="hover:text-emerald-500"
-              >Contact</a
-            >
-          </li>
-          <li>
-            <a
-              href="./Play.html"
-              class="bg-emerald-500 shadow-lg shadow-emerald-500/50 text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-600">
-              Play
-            </a>
-          </li>
-        </ul>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
       </div>
-
-      <!-- Mobile Menu -->
-      <ul id="mobile-menu" class="md:hidden hidden items-center mt-4 space-y-4">
-        <li><a href="./index.html" class="block hover:text-emerald-500">Home</a></li>
-        <li><a href="./Experience.html" class="block hover:text-emerald-500">Experience</a></li>
-        <li>
-          <button
-            id="mobile-resources-btn" class="w-full hover:text-emerald-500">
-            Category ▾
-          </button>
-          <ul id="mobile-resources-menu" class="absolute left-1/4 mt-2 w-48 bg-emerald-800 text-white rounded-xl shadow-lg hidden py-2"
-          >
-            <li>
-              <a href="./Games.html"
-                class="block px-6 py-3 hover:bg-emerald-200 hover:text-black rounded-lg">
-                Games
-              </a>
-            </li>
-            <li>
-              <a
-                href="./AR.html"
-                class="block px-6 py-3 hover:bg-emerald-200 hover:text-black rounded-lg">
-                AR
-              </a>  
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="./Contact.html" class="block hover:text-emerald-500"
-            >Contact</a
-          >
-        </li>
-        <li>
-          <a
-            href="./Play.html"
-            class="bg-emerald-500 shadow-lg shadow-emerald-500/50 text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-600"
-          >
-            Play
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Main Content -->
-<main class="pt-32 px-4 text-center max-w-4xl mx-auto">
-  <p class="text-2xl text-emerald-400">Welcome to</p>
-  <h1 class="aurora-title text-5xl sm:text-6xl mb-4">Blackyee's Studio</h1>
-
-  <p class="text-lg sm:text-xl text-gray-300 mt-6 leading-relaxed">
-    I'm <span class="text-emerald-400 font-semibold">Sankar</span> — a Unity developer who’s all about creating meaningful,
-    fun, and immersive experiences — whether it's a stylized<span class="text-white font-medium">game</span> or an 
-    <span class="text-white font-medium">AR project</span> that blends the real and digital worlds.<br><br>
-    I enjoy taking an idea, shaping it with code, adding a bit of design magic, and turning it into something people can actually 
-    <em>feel</em>. My goal? To make experiences that are not just interactive, but memorable.
-  </p>
-  
-
-  <div class="mt-8">
-    <a
-      href="#"
-      class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-6 rounded-lg transition" >
-      View My Work
-    </a>
-  </div>
-
-  <div class="mt-12">
-    <img
-      src=""
-      alt="Featured Project"
-      class="w-full max-w-3xl rounded-2xl shadow-xl mx-auto"
-    />
-    <p class="mt-4 text-gray-400">Explore one of my latest creation</p>
-  </div>
-</main>
-
-    <!-- Scripts -->
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">Marriage Proposal</div>
+      </div>
+    </div>
     <script>
-      const resourcesBtn = document.getElementById("resources-btn");
-      const resourcesMenu = document.getElementById("resources-menu");
-      const hamburgerBtn = document.getElementById("hamburger-btn");
-      const navMenu = document.getElementById("nav-menu");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const mobileResourcesBtn = document.getElementById("mobile-resources-btn");
-      const mobileResourcesMenu = document.getElementById("mobile-resources-menu");
-    
-      // Desktop dropdown
-      resourcesBtn?.addEventListener("click", (e) => {
-        e.stopPropagation();
-        resourcesMenu.classList.toggle("hidden");
-      });
-    
-      // Mobile menu toggle
-      hamburgerBtn?.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    
-      // Mobile category dropdown toggle
-      mobileResourcesBtn?.addEventListener("click", (e) => {
-        e.stopPropagation();
-        mobileResourcesMenu.classList.toggle("hidden");
-      });
-    
-      // Close dropdowns when clicking outside
-      document.addEventListener("click", (e) => {
-        // Check if click is outside both buttons and menus
-        if (
-          !resourcesBtn?.contains(e.target) &&
-          !resourcesMenu?.contains(e.target)
-        ) {
-          resourcesMenu?.classList.add("hidden");
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
+
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
         }
-    
-        if (
-          !mobileResourcesBtn?.contains(e.target) &&
-          !mobileResourcesMenu?.contains(e.target)
-        ) {
-          mobileResourcesMenu?.classList.add("hidden");
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
         }
-      });
+        updateBannerVisibility();
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Build.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Build.data",
+        frameworkUrl: buildUrl + "/Build.framework.js",
+        codeUrl: buildUrl + "/Build.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Blackyee's",
+        productName: "Marriage Proposal",
+        productVersion: "1",
+        showBanner: unityShowBanner,
+      };
+
+      // By default, Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      // If you would like all file writes inside Unity Application.persistentDataPath
+      // directory to automatically persist so that the contents are remembered when
+      // the user revisits the site the next time, uncomment the following line:
+      // config.autoSyncPersistentDataPath = true;
+      // This autosyncing is currently not the default behavior to avoid regressing
+      // existing user projects that might rely on the earlier manual
+      // JS_FileSystem_Sync() behavior, but in future Unity version, this will be
+      // expected to change.
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
+        canvas.className = "unity-mobile";
+
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+        // config.devicePixelRatio = 1;
+
+
+      } else {
+        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+              }).then((unityInstance) => {
+                loadingBar.style.display = "none";
+                fullscreenButton.onclick = () => {
+                  unityInstance.SetFullscreen(1);
+                };
+              }).catch((message) => {
+                alert(message);
+              });
+            };
+
+      document.body.appendChild(script);
+
     </script>
-    
+  </body>
 </html>
